@@ -1,9 +1,6 @@
 package com.example.watchesapi.service;
 
-import com.example.watchesapi.model.Account;
-import com.example.watchesapi.model.Cart;
-import com.example.watchesapi.model.Product;
-import com.example.watchesapi.model.Trademark;
+import com.example.watchesapi.model.*;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,4 +105,29 @@ public class AppService {
     public List<Cart> getListCart() {
         return listCart;
     }
+    public void deleteCart(String id) {
+        for (int i = 0 ; i < listCart.size() ; i++){
+            Cart cart = listCart.get(i);
+            if(cart.getId().equals(id)){
+                listCart.remove(i);
+                break;
+            }
+        }
+    }
+
+
+    //CartDetail
+    private List<CartDetail> listCartDetail = new ArrayList<>();
+
+    public void addListCartDetail(List<CartDetail> list){
+        for (int i = 0 ; i < list.size() ; i++){
+            listCartDetail.add(list.get(i));
+        }
+    }
+    public List<CartDetail> getListCartDetail(){
+        return listCartDetail;
+    }
+
+
+
 }

@@ -1,9 +1,6 @@
 package com.example.watchesapi.controller;
 
-import com.example.watchesapi.model.Account;
-import com.example.watchesapi.model.Cart;
-import com.example.watchesapi.model.Product;
-import com.example.watchesapi.model.Trademark;
+import com.example.watchesapi.model.*;
 import com.example.watchesapi.service.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -52,12 +49,27 @@ public class AppController {
 
 
     @RequestMapping(value = "/cart",method = RequestMethod.GET)
-    public List<Cart> addCart(){
+    public List<Cart> getListCart(){
         return appService.getListCart();
     }
     @RequestMapping(value = "/cart",method = RequestMethod.POST)
     public void addCart(@RequestBody Cart cart){
         appService.addCart(cart);
+    }
+    @RequestMapping(value = "/cart/{id}",method = RequestMethod.DELETE)
+    public void deleteCart(@PathVariable String id){
+         appService.deleteCart(id);
+    }
+
+
+    @RequestMapping(value = "/cartdetail",method = RequestMethod.GET)
+    public List<CartDetail> getListCartDetail(){
+        return appService.getListCartDetail();
+    }
+
+    @RequestMapping(value = "/cartdetail",method = RequestMethod.POST)
+    public void addCartDetail(@RequestBody List<CartDetail> listCartDetail){
+        appService.addListCartDetail(listCartDetail);
     }
 
 }
