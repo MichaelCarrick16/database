@@ -124,10 +124,16 @@ public class AppService {
             listCartDetail.add(list.get(i));
         }
     }
-    public List<CartDetail> getListCartDetail(){
-        return listCartDetail;
+
+
+    public List<CartDetail> getListCartDetail(String idCart) {
+        ArrayList<CartDetail> listCartDetailDefault = new ArrayList<>();
+        for (int i = 0 ; i < listCartDetail.size() ; i++){
+            CartDetail cartDetail = listCartDetail.get(i);
+            if(cartDetail.getIdCart().equals(idCart)){
+                listCartDetailDefault.add(cartDetail);
+            }
+        }
+        return listCartDetailDefault;
     }
-
-
-
 }

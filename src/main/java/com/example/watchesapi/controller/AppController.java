@@ -62,9 +62,9 @@ public class AppController {
     }
 
 
-    @RequestMapping(value = "/cartdetail",method = RequestMethod.GET)
-    public List<CartDetail> getListCartDetail(){
-        return appService.getListCartDetail();
+    @RequestMapping(value = "/cartdetail/{idCart}",method = RequestMethod.GET)
+    public List<CartDetail> getListCartDetail(@PathVariable String idCart){
+        return appService.getListCartDetail(idCart);
     }
 
     @RequestMapping(value = "/cartdetail",method = RequestMethod.POST)
